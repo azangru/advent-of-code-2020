@@ -7,6 +7,5 @@ export const readLines = (path: string) => {
 
 export const readLinesAsNumbers = (path: string) => {
   const lines = readLines(path);
-  console.log('lines', lines.map((number) => parseInt(number, 10)));
   return lines.map((number) => parseInt(number, 10));
 };
