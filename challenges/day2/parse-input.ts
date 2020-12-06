@@ -8,8 +8,8 @@
  */
 
 export type Data = {
-  minLetterEncounters: number;
-  maxLetterEncounters: number;
+  firstNumber: number;
+  secondNumber: number;
   letter: string;
   text: string;
 };
@@ -19,8 +19,8 @@ export const parseInput = (input: string): Data => {
   const regex = /(\d+)-(\d+) (.{1}): (.*)$/;
   const [, minLetterEncounters, maxLetterEncounters, letter, text] = regex.exec(input) as RegExpExecArray;
   return {
-    minLetterEncounters: parseInt(minLetterEncounters),
-    maxLetterEncounters: parseInt(maxLetterEncounters),
+    firstNumber: parseInt(minLetterEncounters),
+    secondNumber: parseInt(maxLetterEncounters),
     letter,
     text
   };
