@@ -1,6 +1,6 @@
 export const splitDocuments = (input: string) => input.split('\n\n');
 
-type ParsedDocument = {
+export type ParsedDocument = {
   byr: string | null; // Birth Year
   iyr: string | null; // Issue Year
   eyr: string | null; // Expiration Year
