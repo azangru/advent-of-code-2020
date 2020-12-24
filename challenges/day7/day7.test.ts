@@ -1,7 +1,10 @@
 // @ts-ignore
 import dedent from 'dedent';
 
-import { countCarrierBagsForShinyGoldBag } from './count-bags';
+import {
+  countCarrierBagsForShinyGoldBag,
+  countContainedBagsForShinyGoldBag
+} from './count-bags';
 
 const exampleInput: string = dedent`
 light red bags contain 1 bright white bag, 2 muted yellow bags.
@@ -15,10 +18,32 @@ faded blue bags contain no other bags.
 dotted black bags contain no other bags.
 `;
 
+const exampleInput2: string = dedent`
+shiny gold bags contain 2 dark red bags.
+dark red bags contain 2 dark orange bags.
+dark orange bags contain 2 dark yellow bags.
+dark yellow bags contain 2 dark green bags.
+dark green bags contain 2 dark blue bags.
+dark blue bags contain 2 dark violet bags.
+dark violet bags contain no other bags.
+`;
+
 describe('countCarrierBagsForShinyGoldBag', () => {
 
   test('example', () => {
     expect(countCarrierBagsForShinyGoldBag(exampleInput)).toBe(4);
+  });
+
+});
+
+describe('countContainedBagsForShinyGoldBag', () => {
+
+  test('example 1', () => {
+    expect(countContainedBagsForShinyGoldBag(exampleInput)).toBe(32);
+  });
+
+  test('example 2', () => {
+    expect(countContainedBagsForShinyGoldBag(exampleInput2)).toBe(126);
   });
 
 });
