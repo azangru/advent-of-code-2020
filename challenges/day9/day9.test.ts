@@ -1,4 +1,5 @@
 import { findFirstInvalid } from './findFirstInvalid';
+import { findContiguousRange } from './findContiguousRange';
 
 import { parseLinesOfIntegers } from '../../shared/common-parsers';
 
@@ -29,5 +30,12 @@ describe('findFirstInvalid', () => {
   test('example 1', () => {
     const numbers = parseLinesOfIntegers(sampleInput);
     expect(findFirstInvalid(numbers, 5)).toBe(127);
+  });
+});
+
+describe('findContiguousRange', () => {
+  test('example1', () => {
+    const numbers = parseLinesOfIntegers(sampleInput);
+    expect(findContiguousRange(numbers, 127)).toEqual([15, 25, 47, 40]);
   });
 });
