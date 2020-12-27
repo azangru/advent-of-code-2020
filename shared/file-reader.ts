@@ -1,5 +1,9 @@
 import fs from 'fs';
 
+export const readFile = (path: string) => {
+  return fs.readFileSync(path, { encoding: 'utf8' }).trim();
+};
+
 export const readLines = (path: string) => {
   const fileContent = fs.readFileSync(path, { encoding: 'utf8' });
   return fileContent.split('\n').filter(line => line !== '');
