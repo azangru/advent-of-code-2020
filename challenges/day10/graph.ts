@@ -4,6 +4,8 @@ export class Graph {
   private end: number;
   private adjList: Map<number, number[]> = new Map();
 
+  private memo: Map<number, number> = new Map();
+
   constructor(sequence: number[]) {
     this.start = sequence[0];
     this.end = sequence[sequence.length - 1];
@@ -22,21 +24,19 @@ export class Graph {
   }
 
   countPaths(current: number = this.start): number {
+    const memoized = this.memo.get(current);
+    if (typeof memoized === 'number') {
+      return memoized;
+    }
+
     const connectedVertices = this.adjList.get(current) as number[];
     if (connectedVertices[0] === this.end) {
       return 1;
     } else {
-      return connectedVertices.reduce((acc, vertex) => {
-        if (acc && acc % 1000000 === 0) {
-          console.log('currently at: ', acc);
-        }
-        return acc + this.countPaths(vertex);
-      }, 0);
+      const result = connectedVertices.reduce((acc, vertex) => acc + this.countPaths(vertex), 0);
+      this.memo.set(current, result);
+      return result; 
     }
-  }
-
-  depthFirstSearch() {
-
   }
 
   getAdjacencyList() {

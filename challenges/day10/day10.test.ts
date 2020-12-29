@@ -72,11 +72,18 @@ describe('getDifferences', () => {
 
 describe('graph', () => {
 
-  test('foo', () => {
+  test('example 1', () => {
+    const numbers = parseLinesOfIntegers(example1);
+    const sequence = buildChain(numbers);
+    const graph = new Graph(sequence);
+    expect(graph.countPaths()).toBe(8);
+  });
+
+  test('example 2', () => {
     const numbers = parseLinesOfIntegers(example2);
     const sequence = buildChain(numbers);
     const graph = new Graph(sequence);
-    console.log(graph.countPaths());
+    expect(graph.countPaths()).toBe(19208);
   });
 
 });
