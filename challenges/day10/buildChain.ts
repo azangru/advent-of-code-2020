@@ -1,3 +1,13 @@
+export const buildChain = (numbers: number[]) => {
+  const sortedNumbers = [...numbers];
+  sortedNumbers.sort((a, b) => a - b);
+  const lastNumber = sortedNumbers[sortedNumbers.length - 1] + 3;
+  sortedNumbers.push(lastNumber);
+  sortedNumbers.unshift(0);
+
+  return sortedNumbers;
+};
+
 export const getDifferences = (numbers: number[]) => {
   numbers.sort((a, b) => a - b);
   const lastNumber = numbers[numbers.length - 1] + 3;

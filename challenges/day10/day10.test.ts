@@ -1,4 +1,8 @@
-import { getDifferences } from './buildChain';
+import {
+  buildChain,
+  getDifferences
+} from './buildChain';
+import { Graph } from './graph';
 
 import { parseLinesOfIntegers } from '../../shared/common-parsers';
 
@@ -48,7 +52,7 @@ const example2 = `
 10
 3`;
 
-describe('buildChain', () => {
+describe('getDifferences', () => {
 
   test('example1', () => {
     const numbers = parseLinesOfIntegers(example1);
@@ -62,6 +66,17 @@ describe('buildChain', () => {
     const differences = getDifferences(numbers);
     expect(differences.get(1)).toBe(22);
     expect(differences.get(3)).toBe(10);
+  });
+
+});
+
+describe('graph', () => {
+
+  test('foo', () => {
+    const numbers = parseLinesOfIntegers(example2);
+    const sequence = buildChain(numbers);
+    const graph = new Graph(sequence);
+    console.log(graph.countPaths());
   });
 
 });
