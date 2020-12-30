@@ -155,7 +155,7 @@ describe('World', () => {
 
 });
 
-describe.only('SecondWorld', () => {
+describe('SecondWorld', () => {
 
   describe('update rules', () => {
 
