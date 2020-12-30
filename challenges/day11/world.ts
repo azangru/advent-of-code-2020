@@ -2,7 +2,7 @@ import { parseInput } from './parse-input';
 
 export class World {
 
-  private parsedWorld: string[][]
+  protected parsedWorld: string[][]
 
   constructor(input: string) {
     this.parsedWorld = parseInput(input);
