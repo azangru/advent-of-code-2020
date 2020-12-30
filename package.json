@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@types/jest": "26.0.15",
-    "dedent": "^0.7.0"
+    "dedent": "^0.7.0",
+    "ts-dedent": "2.0.0"
   }
 }
