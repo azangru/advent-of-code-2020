@@ -74,3 +74,66 @@ export class Ship {
   }
 
 }
+
+
+export class SecondShip {
+
+  protected instructions: Instruction[]
+  protected position: Position = { x: 0, y: 0 }
+
+  protected waypoint: Position = { x: 10, y: 1 }
+
+  constructor(input: string) {
+    this.instructions = parseInput(input) as Instruction[];
+  }
+
+  sail() {
+    this.instructions.forEach(this.executeInstruction);
+  }
+
+  executeInstruction = (instruction: Instruction) => {
+    const { action, units } = instruction;
+
+    if (directions.includes(action as Direction)) {
+      this.moveWaypoint(action as Direction, units);
+    } else if (['L', 'R'].includes(action)) {
+      this.rotateWaypoint(action as Side, units);
+    } else if (action === 'F') {
+      this.move(units);
+    }
+  }
+
+  move(distance: number) {
+    this.position.x = this.position.x + distance * this.waypoint.x;
+    this.position.y = this.position.y + distance * this.waypoint.y;
+  }
+
+  moveWaypoint(direction: Direction, distance: number) {
+    if (direction === 'N') {
+      this.waypoint.y = this.waypoint.y + distance;
+    } else if (direction === 'S') {
+      this.waypoint.y = this.waypoint.y - distance;
+    } else if (direction === 'E') {
+      this.waypoint.x = this.waypoint.x + distance;
+    } else if (direction === 'W') {
+      this.waypoint.x = this.waypoint.x - distance;
+    }
+  }
+
+  rotateWaypoint(direction: Side, angle: number) {
+    const { x, y } = this.waypoint;
+    if (angle === 180) {
+      this.waypoint = { x: -x, y: -y };
+    } else if ((direction === 'R' && angle === 90) || (direction === 'L' && angle === 270)) {
+      this.waypoint = { x: y, y: -x };
+    } else if ((direction === 'R' && angle === 270) || (direction === 'L' && angle === 90)) {
+      this.waypoint = { x: -y, y: x };
+    }
+  }
+
+  getManhattanDistanceFromOrigin() {
+    const { x, y } = this.position;
+    return Math.abs(x) + Math.abs(y);
+  }
+
+}
