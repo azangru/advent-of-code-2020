@@ -1,7 +1,7 @@
 /*
 
 First attempt — do simple iteration using the largest bus number.
-Turns out it's not fast enough to get to the answer.
+Passes the tests, but isn't fast enough to get to the answer.
 
 */
 

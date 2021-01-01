@@ -1,4 +1,5 @@
 import { simpleSolver } from './simple-solver';
+import { part2Solver } from './part2-solver-better';
 
 const input = `
 1002632
@@ -10,4 +11,10 @@ const solvePart1 = () => {
   return (id as number) * remainingTime;
 };
 
+const solvePart2 = () => {
+  const timetable = input.trim().split('\n')[1];
+  return part2Solver(timetable);
+};
+
 console.log('solution for part 1 of day 13 is: ', solvePart1());
+console.log('solution for part 2 of day 13 is: ', solvePart2());
