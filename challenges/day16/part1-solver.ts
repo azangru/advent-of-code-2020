@@ -1,7 +1,7 @@
 import { parseInput } from './parse-input';
 
 export const solve1 = (input: string) => {
-  const { rules, myTicket, nearbyTickets } = parseInput(input);
+  const { rules, nearbyTickets } = parseInput(input);
   const validIntervals = rules.reduce((acc, rule): number[][][] => {
     return [...acc, [rule.firstInterval, rule.secondInterval]];
   }, [] as number[][][]);
